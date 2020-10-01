@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 interface TemplateProps {
   canvas: React.ReactChild;
-  coordinates?: React.ReactChild;
+  coordinates: React.ReactChild;
 }
 
 const Template: React.FC<TemplateProps> = ({ canvas, coordinates }) => {

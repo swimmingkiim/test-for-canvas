@@ -1,9 +1,10 @@
 import React, { useEffect, useReducer, useRef } from "react";
 import Template from "./template";
-import Canvas from "components/Canvas/Canvas";
 import reducer from "./reducer";
 import { StateType } from "./reducer";
 import Action from "./actions";
+import Canvas from "components/Canvas/Canvas";
+import Coordinates from "components/Coordinates/Coordinates";
 
 const Page = () => {
   const [state, dispatch] = useReducer<React.Reducer<StateType, Action>>(
@@ -24,6 +25,7 @@ const Page = () => {
     }
   };
   const canvas = <Canvas canvasRef={canvasRef} onClickFunc={onCanvasClick} />;
+  const coordinates = <Coordinates list={state} />;
   const ctx = canvasRef.current?.getContext("2d");
 
   useEffect(() => {
@@ -35,7 +37,7 @@ const Page = () => {
     }
   }, [state, ctx]);
 
-  return <Template canvas={canvas} />;
+  return <Template canvas={canvas} coordinates={coordinates} />;
 };
 
 export default Page;
